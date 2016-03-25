@@ -44,7 +44,7 @@ public class PoetryDetailFragment extends BaseFragment{
 		TextView text_title=(TextView) layout.findViewById(R.id.text_title);
 		TextView text_author=(TextView) layout.findViewById(R.id.text_author);
 		TextView text_content=(TextView) layout.findViewById(R.id.text_content);
-		
+
 		 mListener.setHeadTitle(poetry.optJSONObject("poem").optString("title"));
 		 mListener.setHomeBackEnable(true);
 		mListener.showHeadRight("诗人生平");

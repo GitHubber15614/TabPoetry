@@ -70,7 +70,9 @@ public class AppFragmentManager {
 
         Fragment fragment = mFragmentManager.findFragmentByTag(tag);
         currentFragmentTag = tag;
+        boolean isExist = true;
         if (null == fragment) {
+            isExist = false;
             if (tag.equals(MAINFRAGMENT)) {
                 fragment = new MainFragment();
             } else if (tag.equals(POETRYDETAIL)) {
@@ -82,13 +84,12 @@ public class AppFragmentManager {
             }
             fragment.setArguments(bundle);
         }
-
         ensureTransaction().replace(R.id.main_container, fragment, tag);
 
 //        在事务提交之前调用FragmentTransaction的addToBackStack()方法，它可以接受一个名字用于描述返回栈的状态，一般传入null即可。
         if (addToStack) {
             mFragmentTransaction.addToBackStack(tag);
-        }else{
+        } else{
             mFragmentTransaction.addToBackStack(null);
         }
         commitTransactions();
@@ -99,8 +100,9 @@ public class AppFragmentManager {
         if (mFragmentTransaction == null) {
             mFragmentTransaction = mFragmentManager.beginTransaction();
 
-            mFragmentTransaction.setTransition(FragmentTransaction.TRANSIT_NONE);
-            mFragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+//            加上以下两句代码会出错
+//            mFragmentTransaction.setTransition(FragmentTransaction.TRANSIT_NONE);
+//            mFragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
         }
         return mFragmentTransaction;
     }

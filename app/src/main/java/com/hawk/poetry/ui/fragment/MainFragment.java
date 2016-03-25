@@ -11,7 +11,6 @@ import com.hawk.poetry.R;
 import com.hawk.poetry.util.AppFragmentManager;
 import com.hawk.poetry.util.TabFragmentManager;
 import com.hawk.poetry.util.TabFragmentManager.OnRgsExtraCheckedChangedListener;
-import com.hawk.poetry.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,7 +100,6 @@ public class MainFragment extends BaseFragment {
 
     @Override
     public void clickRightBtn() {
-        ToastUtil.show("click");
         mListener.switchToFragment(AppFragmentManager.WEBVIEWFRAGMENT,false,null);
     }
 }
